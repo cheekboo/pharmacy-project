@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Medicines</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Search Medicines</h2>
+
+    <form method="post">
+      <input type="text" name="keyword" placeholder="Enter medicine name or code" required>
+      <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+      <h3>Results:</h3>
+      <ul>
+        {% for med in results %}
+          <li class="card">
+            <p><strong>{{ med.name }}</strong> (Code: {{ med.code }}) - Qty: {{ med.quantity }}</p>
+            <p>Category: {{ med.category }} | Store: {{ med.store_email }}</p>
+
+            <form action="/request_order" method="POST" style="margin-top: 0.5rem;">
+              <input type="hidden" name="code" value="{{ med.code }}">
+              <input type="hidden" name="store_id" value="{{ med.store_id }}">
+              <label>Quantity:</label>
+              <input type="number" name="quantity" min="1" max="{{ med.quantity }}" required>
+              <button type="submit">🛒 Order</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <p style="margin-top: 1rem;">
+      <a href="/dashboard/public">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>

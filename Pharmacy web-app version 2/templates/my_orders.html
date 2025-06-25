@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Requests</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container order-container">
+    <h2 class="page-title">Order Requests</h2>
+
+    {% for order in orders %}
+      <div class="card order-card">
+        <p><strong>User:</strong> {{ order['email'] }}</p>
+        <p><strong>Medicine Code:</strong> {{ order['medicine_code'] }}</p>
+        <p><strong>Quantity:</strong> {{ order['quantity_requested'] }}</p>
+        <p>
+          <strong>Status:</strong>
+          <span class="badge
+            {% if order['status'] == 'Pending' %} badge-pending
+            {% elif order['status'] == 'Approved' %} badge-approved
+            {% elif order['status'] == 'Rejected' %} badge-rejected
+            {% endif %}
+          ">{{ order['status'] }}</span>
+        </p>
+
+        {% if order['status'] == 'Pending' %}
+        <form method="post" class="action-form">
+          <input type="hidden" name="order_id" value="{{ order['id'] }}">
+          <button type="submit" name="action" value="accept" class="btn-accept">✅ Accept</button>
+          <button type="submit" name="action" value="reject" class="btn-reject">❌ Reject</button>
+        </form>
+        {% endif %}
+      </div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status</title>
+</head>
+<body>
+<h2>My Orders</h2>
+<ul>
+  {% for order in orders %}
+    <li>
+      Medicine Code: {{ order['medicine_code'] }} |
+      Quantity: {{ order['quantity_requested'] }} |
+      Status: <strong>{{ order['status'] }}</strong>
+    </li>
+  {% endfor %}
+</ul>
+<a href="/dashboard/public">Back</a>    
+</body>
+</html>
+    {% endfor %}
+
+    <p class="back-link">
+      <a href="/dashboard/store">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>

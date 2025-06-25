@@ -1,0 +1,6 @@
+1>Provide User(Consumer) nearby location of store which is available (0%)
+2>Website styling (0%)
+_________________________________________________________________________
+
+Total work based on functionality= nearly 90%
+Ready to deploy: 50% (styling and few more features to add)

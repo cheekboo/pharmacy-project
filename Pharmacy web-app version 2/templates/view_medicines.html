@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Medicines</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Your Medicines</h2>
+
+    <ul>
+      {% for m in medicines %}
+        <li class="card">
+          <strong>{{ m.name }}</strong> ({{ m.code }})<br>
+          Quantity: {{ m.quantity }}<br>
+          Category: <span class="badge">{{ m.category }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p style="margin-top: 1rem;">
+      <a href="/dashboard/store">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>

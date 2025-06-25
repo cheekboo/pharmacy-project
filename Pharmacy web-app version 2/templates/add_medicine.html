@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Medicine</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Add Medicine</h2>
+
+    <form method="post">
+      <label>Name:</label><br>
+      <input name="name" placeholder="Medicine Name" required><br>
+
+      <label>Code:</label><br>
+      <input name="code" placeholder="Medicine Code" required><br>
+
+      <label>Quantity:</label><br>
+      <input name="quantity" type="number" placeholder="Quantity" required><br>
+
+      <label>Category:</label><br>
+      <select name="category" required>
+        <option value="Allopathic">Allopathic</option>
+        <option value="Ayurvedic">Ayurvedic</option>
+        <option value="Homeopathic">Homeopathic</option>
+      </select><br><br>
+
+      <button type="submit">Add Medicine</button>
+    </form>
+
+    <p style="margin-top: 1rem;">
+      <a href="/dashboard/store">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>

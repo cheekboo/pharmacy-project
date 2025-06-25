@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Store Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Store Dashboard</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+      <a href="/add_medicine">
+        <button>Add Medicine</button>
+      </a>
+      <a href="/view_medicines">
+        <button>View Medicines</button>
+      </a>
+      <a href="/view_orders">
+        <button>View Orders</button>
+      </a>
+      <a href="/logout">
+        <button style="background: #dc2626;">Logout</button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
